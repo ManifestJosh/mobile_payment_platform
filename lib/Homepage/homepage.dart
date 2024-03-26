@@ -1,19 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:mobile_payment_platform/styles.dart';
 
-class Homepage extends StatefulWidget {
+class Homepage extends StatelessWidget {
   const Homepage({super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
-}
-
-class _HomepageState extends State<Homepage> {
-  @override
   Widget build(BuildContext context) {
+    String username = "Blvck";
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "W4LLET",
+          style: headingTextStyle,
+        ),
+        centerTitle: true,
+        leading: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Image.asset(
+            'assets/logos.png',
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32.0),
+        child: Row(
+          children: <Widget>[
+            Text(
+              "Welcome,$username",
+              style: accountHeadTextStyle,
+            ),
+            const Spacer(),
+            const Icon(
+              Icons.notifications,
+              color: Color.fromARGB(255, 16, 33, 46),
+              size: 30,
+            )
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.green.shade200,
+        color: Colors.blue.shade100,
         shape: const CircularNotchedRectangle(),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -37,7 +63,7 @@ class _HomepageState extends State<Homepage> {
             ]),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green.shade200,
+        backgroundColor: Colors.blue.shade100,
         shape: const CircleBorder(eccentricity: 0.7),
         onPressed: () {},
         child: Icon(Icons.add),
