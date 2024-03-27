@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_payment_platform/Homepage/homepage.dart';
+
+import 'Homepage/firstPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
           primaryColor: Colors.green.shade300),
-      home: Homepage(),
+      home: OnBoardingScreen(),
     );
   }
 }
