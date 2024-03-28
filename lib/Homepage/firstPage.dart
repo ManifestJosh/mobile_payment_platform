@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_payment_platform/Homepage/homepage.dart';
+import 'package:mobile_payment_platform/styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -29,7 +30,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           children: [
             Container(color: Colors.white),
             Container(color: Colors.blue.shade200),
-            Container(color: Colors.blue.shade400)
+            Container(
+              alignment: Alignment(0, 0.5),
+              color: Colors.blue.shade400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Welcome To W4LLET !",
+                    textAlign: TextAlign.center,
+                    style: headingTextStyle.copyWith(
+                        color: Color.fromARGB(255, 208, 235, 246)),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
         Container(

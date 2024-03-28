@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_payment_platform/routes/notificationpage.dart';
+import 'package:mobile_payment_platform/routes/payment.dart';
+import 'package:mobile_payment_platform/routes/searchbar.dart';
 
 import 'package:mobile_payment_platform/styles.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../routes/Menupage.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    PageController _controller = PageController();
     String username = "Blvck";
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
@@ -23,64 +30,76 @@ class Homepage extends StatelessWidget {
             ),
           ),
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "Welcome, $username",
-                    style: accountHeadTextStyle,
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.notifications,
-                    color: Color.fromARGB(255, 165, 212, 249),
-                    size: 30,
-                  )
-                ],
-              ),
+        body: Column(children: [
+          ListTile(
+            title: Text(
+              "Welcome, $username",
+              style: accountHeadTextStyle,
             ),
-            GestureDetector(
-              child: SizedBox(
-                height: 250,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    HorizontalTile(),
-                    SizedBox(
-                      width: 12,
-                    ),
-                    HorizontalTile(),
-                    SizedBox(
-                      width: 12,
-                    ),
-                    HorizontalTile(),
-                  ],
+            leading: CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.black26,
+            ),
+            trailing: IconButton(
+              icon: Icon(Icons.notifications),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NotificationPage()));
+              },
+              color: Color.fromARGB(255, 165, 212, 249),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: 200,
+            child: PageView.builder(
+              controller: _controller,
+              itemCount: 3,
+              itemBuilder: (_, index) => Container(
+                height: 300,
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 105, 220, 240),
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 4,
-                itemBuilder: (BuildContext context, index) {
-                  return Container(
-                    child: ListTile(),
-                    margin: EdgeInsets.all(16.0),
-                    height: 100,
-                    decoration: BoxDecoration(
-                        border: Border.all(),
-                        borderRadius: BorderRadius.all(Radius.circular(16.0))),
-                  );
-                },
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SmoothPageIndicator(
+                controller: _controller,
+                count: 3,
+                effect: WormEffect(
+                    activeDotColor:
+                        Colors.blue.shade200), // your preferred effect
               ),
-            )
-          ],
-        ),
+            ],
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 4,
+              itemBuilder: (BuildContext context, index) {
+                return Container(
+                  child: ListTile(),
+                  margin: EdgeInsets.all(16.0),
+                  height: 100,
+                  decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                );
+              },
+            ),
+          ),
+        ]),
         bottomNavigationBar: BottomAppBar(
           color: Colors.blue.shade100,
           shape: const CircularNotchedRectangle(),
@@ -93,15 +112,26 @@ class Homepage extends StatelessWidget {
                 ),
                 IconButton(
                   icon: Icon(Icons.search),
-                  onPressed: () {},
+                  onPressed: () {
+                    showSearch(
+                      context: context,
+                      delegate: CustomSearchDelegate(),
+                    );
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.payment),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PaymentPage()));
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.menu),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MenuPage()));
+                  },
                 ),
               ]),
         ),
