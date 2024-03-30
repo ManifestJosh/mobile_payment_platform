@@ -31,24 +31,27 @@ class Homepage extends StatelessWidget {
           ),
         ),
         body: Column(children: [
-          ListTile(
-            title: Text(
-              "Welcome, $username",
-              style: accountHeadTextStyle,
-            ),
-            leading: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.black26,
-            ),
-            trailing: IconButton(
-              icon: Icon(Icons.notifications),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => NotificationPage()));
-              },
-              color: Color.fromARGB(255, 165, 212, 249),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              title: Text(
+                "Welcome, $username",
+                style: accountHeadTextStyle,
+              ),
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundColor: Colors.black26,
+              ),
+              trailing: IconButton(
+                icon: Icon(Icons.notifications),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationPage()));
+                },
+                color: Color.fromARGB(255, 165, 212, 249),
+              ),
             ),
           ),
           const SizedBox(

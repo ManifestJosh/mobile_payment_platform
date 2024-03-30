@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:mobile_payment_platform/Homepage/homepage.dart';
 import 'package:mobile_payment_platform/styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -28,21 +29,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             });
           },
           children: [
-            Container(color: Colors.white),
-            Container(color: Colors.blue.shade200),
             Container(
-              alignment: Alignment(0, 0.5),
+              color: Colors.white,
+              child: LottieBuilder.network(
+                  "https://lottie.host/80b00d59-29af-4315-bb4e-f94463173bb8/x8iJpUzVwZ.json"),
+            ),
+            Container(
+              color: Colors.blue.shade200,
+              child: LottieBuilder.network(
+                  "https://lottie.host/0205582a-0276-4bca-ae58-14b61d67eb9d/tZPCXRwqb6.json"),
+            ),
+            Container(
               color: Colors.blue.shade400,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Welcome To W4LLET !",
-                    textAlign: TextAlign.center,
-                    style: headingTextStyle.copyWith(
-                        color: Color.fromARGB(255, 208, 235, 246)),
-                  ),
-                ],
+              child: Center(
+                child: Lottie.network(
+                    'https://lottie.host/4a34d327-8efe-4702-a6ff-a43da3d5da21/rhECHJdT7i.json'),
               ),
             )
           ],

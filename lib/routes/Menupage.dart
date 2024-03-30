@@ -12,15 +12,26 @@ class MenuPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          buildListTile(title: 'Edit Profile', leading: Icon(Icons.person)),
-          buildListTile(title: 'Change Theme', leading: Icon(Icons.color_lens)),
-          buildListTile(title: 'Change Password', leading: Icon(Icons.key)),
           buildListTile(
-              title: 'Activate Account', leading: Icon(Icons.thumb_up_sharp)),
+              title: 'Edit Profile', leading: Icon(Icons.person), onTap: () {}),
           buildListTile(
-              title: 'Refer Us', leading: Icon(Icons.people_outline_outlined)),
-          buildListTile(title: 'Contact Us', leading: Icon(Icons.call)),
-          buildListTile(title: 'Log out', leading: Icon(Icons.cancel)),
+              title: 'Change Theme',
+              leading: Icon(Icons.color_lens),
+              onTap: () {}),
+          buildListTile(
+              title: 'Change Password', leading: Icon(Icons.key), onTap: () {}),
+          buildListTile(
+              title: 'Activate Account',
+              leading: Icon(Icons.thumb_up_sharp),
+              onTap: () {}),
+          buildListTile(
+              title: 'Refer Us',
+              leading: Icon(Icons.people_outline_outlined),
+              onTap: () {}),
+          buildListTile(
+              title: 'Contact Us', leading: Icon(Icons.call), onTap: () {}),
+          buildListTile(
+              title: 'Log out', leading: Icon(Icons.cancel), onTap: () {}),
         ],
       ),
     );
@@ -30,9 +41,10 @@ class MenuPage extends StatelessWidget {
 Widget buildListTile({
   required String title,
   required leading,
+  required onTap,
 }) =>
     ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 16),
-      leading: leading,
-      title: Text(title),
-    );
+        contentPadding: EdgeInsets.symmetric(horizontal: 16),
+        leading: leading,
+        title: Text(title),
+        onTap: onTap);
