@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Signup.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
@@ -60,6 +62,42 @@ class LoginScreen extends StatelessWidget {
                         child: Text('LOGIN'),
                       ),
                     ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("OR "),
+                        SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton.icon(
+                              onPressed: () {},
+                              icon: Image.asset(
+                                'assets/google.png',
+                                width: 15,
+                              ),
+                              label: Text('Sign in with Google')),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return SignUpPage();
+                            }));
+                          },
+                          child: const Text.rich(TextSpan(
+                              text: "Don't have an Account ?",
+                              children: [
+                                TextSpan(
+                                    text: 'SignUp',
+                                    style: TextStyle(color: Colors.blue))
+                              ]))),
+                    )
                   ],
                 ),
               ))
