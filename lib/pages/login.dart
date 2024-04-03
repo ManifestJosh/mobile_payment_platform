@@ -8,6 +8,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final _formkey = GlobalKey<FormState>();
+    final TextEditingController _emailController = TextEditingController();
+    final TextEditingController _passwordController = TextEditingController();
 
     return SafeArea(
       child: Scaffold(
@@ -28,10 +31,17 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     TextFormField(
                       decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email_outlined),
-                          labelText: 'E-mail',
-                          hintText: 'E-mail',
-                          border: OutlineInputBorder()),
+                        prefixIcon: Icon(Icons.email_outlined),
+                        labelText: 'E-mail',
+                        hintText: 'E-mail',
+                        border: OutlineInputBorder(),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        return null;
+                      },
                     ),
                     SizedBox(
                       height: 30,
@@ -46,6 +56,12 @@ class LoginScreen extends StatelessWidget {
                             icon: Icon(Icons.remove_red_eye),
                             onPressed: () {},
                           )),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
                     ),
                     SizedBox(height: 20),
                     Align(
@@ -58,14 +74,29 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_formkey.currentState != null &&
+                              _formkey.currentState!.validate()) {
+                            String email = _emailController.text;
+                            String password = _passwordController.text;
+                          }
+                        },
                         child: Text('LOGIN'),
                       ),
                     ),
+                    SizedBox(
+                      height: 30,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("OR "),
+                        Text(
+                          "OR",
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         SizedBox(
                           width: double.infinity,
                           child: OutlinedButton.icon(
@@ -75,10 +106,10 @@ class LoginScreen extends StatelessWidget {
                                 width: 15,
                               ),
                               label: Text('Sign in with Google')),
-                        )
+                        ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Align(

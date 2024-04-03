@@ -59,7 +59,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               },
               child: Text('Skip'),
             ),
-            SmoothPageIndicator(controller: _controller, count: 3),
+            SmoothPageIndicator(
+                controller: _controller,
+                effect: ExpandingDotsEffect(
+                  dotHeight: 5.0,
+                  dotWidth: 10.0,
+                ),
+                count: 3),
             onLastPage
                 ? GestureDetector(
                     onTap: () {
