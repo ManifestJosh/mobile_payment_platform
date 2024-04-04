@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_payment_platform/themes.dart';
 
 import 'pages/firstPage.dart';
 
@@ -15,9 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "This is a Payment App",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          primaryColor: Colors.green.shade300),
+      themeMode: ThemeMode.light,
+      darkTheme: WTheme.darkTheme,
+      theme: WTheme.lightTheme,
       home: OnBoardingScreen(),
     );
   }

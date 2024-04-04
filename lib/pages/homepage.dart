@@ -79,6 +79,8 @@ class Homepage extends StatelessWidget {
                 controller: _controller,
                 count: 3,
                 effect: WormEffect(
+                    dotWidth: 10,
+                    dotHeight: 5,
                     activeDotColor:
                         Colors.blue.shade200), // your preferred effect
               ),

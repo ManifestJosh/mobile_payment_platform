@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_payment_platform/pages/forgotpassword.dart';
 
 import 'Signup.dart';
 
@@ -7,7 +8,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final _formkey = GlobalKey<FormState>();
     final TextEditingController _emailController = TextEditingController();
     final TextEditingController _passwordController = TextEditingController();
@@ -67,8 +67,16 @@ class LoginScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {},
-                        child: Text("Forgot Password?"),
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ForgotPasswordPage();
+                          }));
+                        },
+                        child: Text(
+                          "Forgot Password?",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -81,7 +89,8 @@ class LoginScreen extends StatelessWidget {
                             String password = _passwordController.text;
                           }
                         },
-                        child: Text('LOGIN'),
+                        child: Text('LOGIN',
+                            style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     SizedBox(
@@ -93,6 +102,7 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Text(
                           "OR",
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         SizedBox(
                           height: 20,
@@ -105,7 +115,10 @@ class LoginScreen extends StatelessWidget {
                                 'assets/google.png',
                                 width: 15,
                               ),
-                              label: Text('Sign in with Google')),
+                              label: Text(
+                                'Sign in with Google',
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              )),
                         ),
                       ],
                     ),
@@ -123,6 +136,7 @@ class LoginScreen extends StatelessWidget {
                           },
                           child: const Text.rich(TextSpan(
                               text: "Don't have an Account ?",
+                              style: TextStyle(color: Colors.black),
                               children: [
                                 TextSpan(
                                     text: 'SignUp',

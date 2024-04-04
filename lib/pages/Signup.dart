@@ -108,7 +108,8 @@ class SignUpPage extends StatelessWidget {
                                 onChanged: (newBool) {}),
                           ),
                           Text(
-                              "By creating an account, you agree with our Terms and Condition")
+                              "By creating an account, you agree with our Terms and Condition",
+                              style: Theme.of(context).textTheme.bodyMedium)
                         ],
                       ),
                     ),
@@ -119,7 +120,10 @@ class SignUpPage extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ButtonStyle(),
-                        child: Text("SIGN UP"),
+                        child: Text(
+                          "SIGN UP",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         onPressed: () {},
                       ),
                     ),
@@ -130,6 +134,7 @@ class SignUpPage extends StatelessWidget {
                       children: [
                         Text(
                           "OR",
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         SizedBox(
                           height: 20,
@@ -142,7 +147,10 @@ class SignUpPage extends StatelessWidget {
                                 'assets/google.png',
                                 width: 15,
                               ),
-                              label: Text('Sign Up with Google')),
+                              label: Text(
+                                'Sign Up with Google',
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              )),
                         ),
                       ],
                     ),
@@ -160,6 +168,7 @@ class SignUpPage extends StatelessWidget {
                           },
                           child: const Text.rich(TextSpan(
                               text: "Already have an Account ?",
+                              style: TextStyle(color: Colors.black),
                               children: [
                                 TextSpan(
                                     text: 'Log in',
